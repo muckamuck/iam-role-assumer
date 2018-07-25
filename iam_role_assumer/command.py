@@ -27,8 +27,9 @@ def cli():
 @click.option('--role', '-r', help='IAM role', required=True)
 @click.option('--session', '-s', help='session name')
 @click.option('--duration', '-t', help='duration, in seconds, of the role session')
+@click.option('--profile', '-p', help='profile for the STS client creation')
 @click.option('--region', help='AWS region')
-def assume(role, session, duration, region):
+def assume(role, session, duration, profile, region):
     try:
         if not region:
             region = find_myself()
@@ -41,7 +42,15 @@ def assume(role, session, duration, region):
         except:
             duration = default_duration
 
-        sts_client = boto3.client('sts')
+        if profile:
+            s = boto3.Session(
+                profile_name=profile,
+                region_name=region
+            )
+            sts_client = s.client('sts')
+        else:
+            sts_client = boto3.client('sts')
+
         assumed_role = sts_client.assume_role(
             RoleArn=role,
             RoleSessionName=session,
