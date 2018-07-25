@@ -2,7 +2,7 @@ from datetime import datetime
 
 
 __title__ = 'iam_role_assumer'
-__version__ = '0.0.1'
+__version__ = '0.0.2'
 __author__ = 'Mr. Chuck Muckamuck'
 __author_email__ = 'chuck.muckamuck@gmail.com'
 __copyright__ = '(c) {}'.format(datetime.now().year)

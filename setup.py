@@ -1,7 +1,7 @@
 from setuptools import setup
 setup(
     name="iam_role_assumer",
-    version='0.0.1',
+    version='0.0.2',
     packages=['iam_role_assumer'],
     description='Assume an AWS IAM role',
     author='Chuck Muckamuck',
