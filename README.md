@@ -1,4 +1,4 @@
-# iam-role-assumer v 0.0.2
+# iam-role-assumer v 0.1.0
 Simple tool to assume an AWS IAM role in a bash shell
 
 
