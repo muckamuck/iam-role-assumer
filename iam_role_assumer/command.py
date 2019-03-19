@@ -88,7 +88,11 @@ def assume(role, session, duration, profile, region):
 
 def find_myself():
     s = boto3.session.Session()
-    return s.region_name
+    region = s.region_name
+    if region:
+        return region
+    else:
+        return 'us-east-1'
 
 
 def verify_real_system():
