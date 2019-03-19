@@ -30,6 +30,10 @@ def cli():
 @click.option('--profile', '-p', help='profile for the STS client creation')
 @click.option('--region', help='AWS region')
 def assume(role, session, duration, profile, region):
+    '''
+    print needed bash variables to assume the indicated role
+    example: $(iam_role_assumer assume -r <role-arn>)
+    '''
     try:
         if not region:
             region = find_myself()
@@ -82,8 +86,19 @@ def assume(role, session, duration, profile, region):
 
         sys.exit(0)
     except Exception as wtf:
-        print('assume() exploded: {}'.format(wtf))
+        print('echo assume() exploded: {}'.format(wtf))
         sys.exit(1)
+
+
+@cli.command()
+def unset():
+    '''
+    unset the AWS environment variable for an assumed role.
+    example: $(iam_role_assumer unset)
+    '''
+    print('unset AWS_ACCESS_KEY_ID')
+    print('unset AWS_SECRET_ACCESS_KEY')
+    print('unset AWS_SECURITY_TOKEN')
 
 
 def find_myself():
