@@ -82,6 +82,11 @@ def assume(role, session, duration, profile, region):
             )
         )
 
+        print('export AWS_SESSION_TOKEN={}'.format(
+                assumed_role['Credentials']['SessionToken']
+            )
+        )
+
         print('export AWS_DEFAULT_REGION={}'.format(region))
 
         sys.exit(0)
